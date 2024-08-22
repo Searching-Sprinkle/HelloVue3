@@ -1,20 +1,14 @@
-
 <template>
     <!-- HTML -->
     <div class="app">
         <h1>hello</h1>
-        <Preson></Preson>
     </div>
 </template>
 
 <script lang="ts">
  //JS或Ts代码
- import Preson from './components/Preson.vue'
  export default {
-    name: 'App',
-    components: {//注册组件
-        Preson
-    }
+    name: 'App'
 }
 </script>
 <style scoped>
