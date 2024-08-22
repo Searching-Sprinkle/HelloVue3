@@ -10,21 +10,16 @@
         
     </div>    
 </template>
-<!-- <script  lang="ts">
+<script lang="ts">
  //JS或Ts代码
- //这里是一个组件，自定义组件名
  export default {
     name: 'Preson',
-}
-</script> -->
-
-<script setup lang="ts" name="Presonal">
-    //setup语法糖，爽！
-    //组合式API
+    setup() {//setup中无法使用this，Vue3中已经弱化this
+        //vue2能读vue3，但vue3不能读vue2
+        //数据
         let name = '张三'//非响应式数据
         let age = 18//非响应式数据
         let tel = '123456789'//非响应式数据
-        let address = '河北'//非响应式数据
 
         //方法
         function changeName() {
@@ -36,6 +31,12 @@
         function showTel() {
             alert(tel)
         }
+        //将方法、数据交出去，模板中才能使用
+        return { name, age, tel, changeName, changeAge, showTel }
+        //return()=>'FUCKYouMan'
+
+    }
+}
 </script>
 
 <style scoped>
