@@ -23,27 +23,27 @@
 </script> -->
 
 <script setup lang="ts" name="Presonal">
-import { reactive,ref } from 'vue'
+import { reactive } from 'vue'
     //数据
-    let car =ref( {
+    let car =reactive( {
         brand:'奔驰',
         price:100,
         color:'黑'
         })
-    let games =ref([
+    let games =reactive([
         {id:'game1',name:'黑神话'},
         {id:'game2',name:'英雄联盟'},
         {id:'game3',name:'王者荣耀'}
     ])
     function changePrice() {
-        car.value.price += 20;
+        car.price += 20;
     }
     function changeGmae1Name() {
-        games.value[0].name = '黑神话·悟空';
+        games[0].name = '黑神话·悟空';
     }
     function reSet() {
-        car.value.price = 100;
-        games.value[0].name = '黑神话';
+        car.price = 100;
+        games[0].name = '黑神话';
     }
 </script>
 
