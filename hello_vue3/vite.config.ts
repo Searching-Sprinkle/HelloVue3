@@ -1,3 +1,4 @@
+//插件文件，从这里导入常用的插件
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'

@@ -1,11 +1,7 @@
 <template>
     <div class="person">
-        姓：<input type="text" v-model="firstName"><br>
-        名：<input type="text" v-model="lastName"><br>
-        <button @click="changeName">改个名字</button><br>
-        全名：<span>
-            {{ fullName }}<br>
-        </span>
+        <h2>当前求和为:{{ sum }}</h2>
+        <button @click="changeSum">sum+1</button>
     </div> 
 </template>
 
@@ -18,33 +14,21 @@
 </script> -->
 
 <script setup lang="ts" name="Presonal">
-import { reactive,toRefs,ref,computed } from 'vue'
-let firstName= ref('zhang')
-let lastName= ref('san')
+import { reactive,toRefs,ref,computed,watch } from 'vue'
 
-// //这样的fullName是一个计算属性，计算属性的值是fullName的计算结果
-// let fullName=computed(()=>{
-//     return firstName.value.slice(0,1).toUpperCase()+firstName.value.slice(1)+'-'+lastName.value
-//     //slice 截取字符串,slice(0,1)截取第一个字符
-//     //toUpperCase()将字符串转换为大写
-// })
+let sum = ref(0)
 
-//这么定义fullName是可读可写的
-let fullName=computed({
-    get(){
-    return firstName.value.slice(0,1).toUpperCase()+firstName.value.slice(1)+'-'+lastName.value
-        },
-    set(val){
-        const [str1,str2] = val.split('-')
-        firstName.value=str1
-        lastName.value=str2
-    }
-    //slice 截取字符串,slice(0,1)截取第一个字符
-    //toUpperCase()将字符串转换为大写
-})
-function changeName(){
-    fullName.value='wang-wu'
+function changeSum() {
+    sum.value++
 }
+
+//监视
+const stopwatch = watch(sum,(newValue,oldValue)=>{
+    console.log('watch',newValue,oldValue)
+    if(newValue >= 10) {
+        stopwatch()
+    }
+})
 </script>
 
 <style scoped>
