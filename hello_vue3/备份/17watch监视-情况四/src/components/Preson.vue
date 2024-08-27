@@ -49,16 +49,20 @@ function changeCar(){
         c2:'丰田'
     }
 }
-/*监视情况五：监视上述的多个数据
+/*监视，情况四，监视ref或者reactive定义的【对象类型】数据中的某个属性，要注意:
+    1.若该属性值不是【对象类型】，需要写成箭头函数，返回该属性值
+    2.若该属性是【对象类型】，可以直接写，也可以写箭头函数，建议写成箭头函数，返回该属性值
 */
-watch([
-    ()=>person.name,
-    ()=>person.age,
-    ()=>person.car
-],(newValue,oldValue)=>{
-    console.log('监视情况五：',newValue,oldValue)
+
+watch(()=>{return person.name},(newValue,oldValue)=>{
+    console.log('person.name变化了',newValue,oldValue)
+})
+/*监视响应式对象中的某个属性，且该属性是对象类型的，可以直接写，也能写函数，更推荐写函数
+*/ 
+watch(()=>{return person.car},(newValue,oldValue)=>{
+    console.log('person.car变化了',newValue,oldValue)
 },{deep:true})
-//结论：全用函数
+//结论：监视的要是对象里的属性，最好写函数式，要看响应式对象中的某个属性，且该属性是对象类型的，要手动开启深度监视
 </script>
 
 <style scoped>
