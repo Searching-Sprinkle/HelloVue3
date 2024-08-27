@@ -1,6 +1,6 @@
 <template>
     <div class="person">
-        <h1>watch情况三：监视【reactiva】定义的【对象类型】的数据，且默认开启深度监视</h1>
+        <h1>watch情况二：监视【ref】定义的【对象类型】的数据</h1>
         <h2>名字：{{ person.name }}</h2>
         <h2>年龄：{{ person.age }}</h2>
         <button @click="changeName">修改名字</button>
@@ -20,27 +20,26 @@
 
 <script setup lang="ts" name="Presonal">
 import { reactive,toRefs,ref,computed,watch } from 'vue'
-let person=reactive({
+let person=ref({
     name:'张三',
     age:18
 })
 function changeName(){
-    person.name='李四'
+    person.value.name='李四'
 }
 function changeAge(){
-    person.age=20
+    person.value.age=20
 }
-//reactive不能直接改，要用Object.assign
 function changePerson(){
-    Object.assign(person,{
+    person.value={
         name:'王五',
         age:30
-    })
+    }
 }
-//监视，情况三，监视【reactive】定义的【对象类型】数据，默认开启深度监视，并且关不了
+//监视，情况一，监视【ref】定义的【对象类型】数据，监视的是对象的引用地址，若想监视对象内部属性的变化，需要手动开启深度监视
 watch(person,(newValue,oldValue)=>{
-    console.log('watch情况三：监视【reactive】定义的【对象类型】的数据',newValue,oldValue)
-})
+    console.log('watch情况二：监视【ref】定义的【对象类型】的数据',newValue,oldValue)
+},{deep:true,immediate:true})
 
 </script>
 
