@@ -9,14 +9,13 @@
 </template>
 
 <script setup lang="ts" name="Preson" >
-import { ref,watch,watchEffect,defineExpose } from 'vue'
+import { ref,watch,watchEffect } from 'vue'
 
 let title2 = ref()
 
 function showLog(){
     console.log(title2.value);
 }
-
 
 </script>
 
