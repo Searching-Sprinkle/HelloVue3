@@ -1,6 +1,5 @@
 <template>
     <div class="person">
-<<<<<<< HEAD
         <h2>当前求和为：{{ sum }}</h2>
         <button @click="changeSum">点我sum+1</button>
 
