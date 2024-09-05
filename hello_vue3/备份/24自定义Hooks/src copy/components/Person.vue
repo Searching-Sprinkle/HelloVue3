@@ -1,6 +1,6 @@
 <template>
     <div class="person">
-        <h2>当前求和为：{{ sum }}</h2>
+        <h2>当前求和为：{{ sum }},放大10倍后{{ bigSum }}</h2>
         <button @click="changeSum">点我sum+1</button>
         <hr>
         <img v-for="(dog,index) in dogList" :src="dog" :key="index"> 
@@ -10,7 +10,11 @@
 
 </template>
 <script lang="ts" setup name="Person">
-import
+import useDog from '@/hooks/useDog';
+import useSum from '@/hooks/useSum';
+
+const {sum,changeSum,bigSum} = useSum();
+const {dogList,getDog} = useDog();
 </script>
 
 <style scoped>
