@@ -3,8 +3,8 @@
       <h1 class="title">Vue路由测试</h1>
       <!--导航区-->
       <div class="navigate">
-         <RouterLink :to="{name:'home'}" active-class="active">首页</RouterLink>
-         <RouterLink :to="{name:'news'}" active-class="active">新闻</RouterLink> <!-- 写法一 -->
+         <RouterLink to="/home" active-class="active">首页</RouterLink>
+         <RouterLink to="/news" active-class="active">新闻</RouterLink> <!-- 写法一 -->
          <RouterLink :to="{path:'/about'}" active-class="active">关于</RouterLink><!-- 写法二 -->
       </div>
       <!--展示区-->

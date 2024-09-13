@@ -13,19 +13,14 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes: [
         {
-            name: 'home',
             path: '/home', 
             component:Home,
         },
         {
-            name: 'about',
-            //路由地址
             path: '/about', 
             component:About,
         },
         {
-            name: 'news',
-            //路由地址
             path: '/news', 
             component:News,
         },
