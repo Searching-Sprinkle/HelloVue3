@@ -33,7 +33,15 @@ const router = createRouter({
                 {
                     name:'detail',
                     path:'detail/:id?/:title?/:content?',
-                    component:Detail
+                    component:Detail,
+                    //props:true
+                    props:function(route){
+                        return {
+                            id:route.params.id,
+                            title:route.params.title,
+                            content:route.params.content
+                        }
+                    }
                 }
             ]
         },
